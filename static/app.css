@@ -1,0 +1,113 @@
+
+td, table, html, body {
+height: 92%;
+padding: 0;
+margin: 0;
+}
+
+body {
+background-color: #F6EBCB;
+}
+
+
+#banner, #editor {
+background: #FFFAEB;
+border: 1px solid #8A7843;
+border-radius: 0.95em;
+}
+
+#banner {
+padding: 0%;
+margin-top: 0.3em;
+margin-bottom: 0.3em;
+color: rgb(7, 54, 66);
+text-align:center;
+width: 30vw;
+overflow:hidden;
+}
+
+#editor {
+padding: 0%;
+margin: 0%;
+text-align:left;
+}
+
+#wrapper {
+width: 92%;
+height: 100%;
+margin-left:auto;
+margin-right:auto;
+}
+
+#edit {
+float: left;
+width: 30vw;
+height: 100%;
+}
+
+#editor {
+height: 92%;
+margin-top: 0.3em;
+}
+
+#outputwrapper {
+float: left;
+width: 50vw;
+margin-left: 1em;
+margin-top: 1em;
+height: 100%;
+}
+
+#error {
+border: 1px solid;
+margin: 10px 0px;
+padding:15px 10px 15px 50px;
+border-color: red;
+word-wrap: break-word;
+margin-top: 1em;
+color: #D8000C;
+background-color: #FFBABA;
+background-repeat: no-repeat;
+background-position: 10px center;
+background-image: url('error.png');
+
+}
+
+.hidden {
+display: none;
+}
+a {
+text-decoration: none;
+color: #8A7843;
+}
+
+a:link, a:visited {
+color: #8A7843;
+}
+a:hover {
+color: #8A7843;
+text-decoration: underline;
+}
+
+#submitButton {
+background: #FFFAEB;
+border-radius:5px;
+font-size:16px;
+font-weight:700;
+padding:4px 16px;
+text-shadow:#FE6 0 1px 
+margin-left: 0;
+text-decoration: none;
+outline: none;
+}
+
+#submitButton:hover {
+background: #8A7843;
+text-decoration: none;
+}
+
+footer {
+text-align: center;
+color: gray;
+margin-top: 0.3em;
+}
