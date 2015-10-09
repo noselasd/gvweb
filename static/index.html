@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Graphviz Online</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Online tool to generate images with Graphviz">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link type="text/css" rel="stylesheet" href="static/app.css">
+  <script src="static/ace/ace.js" type="text/javascript" charset="utf-8" ></script>
+  <script src="static/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8" ></script>
+  <script src="static/app.js" type="text/javascript" charset="utf-8" ></script>
+</head>
+<body>
+<div id="wrapper">
+<header id="banner">
+    <h1>Online <a href="http://www.graphviz.org/">Graphviz</a> Generator</h1>
+</header>
+
+
+<section id="edit">
+    <form action="generate" method="post" id="generateForm">
+
+            <input id="submitButton" title="Or hit CTRL+Enter to generate the graph" type="submit" value="Create Graph" >
+            <label>Output:</label>
+            <label><input type="radio" name="imagetype" value="png" checked>png</label>
+            <label><input type="radio" name="imagetype" value="gif">gif</label>
+            <label><input type="radio" name="imagetype" value="jpg">jpg</label>
+            <label><input type="radio" name="imagetype" value="svg">svg</label>
+    
+    <textarea  id="graphtext" name="graphtext" style="display:none;"></textarea>
+    </form>
+    <div id="editor">/* Type the graphviz dot notation here */
+    digraph G {
+      idle -&gt; calling
+      calling -&gt; talking[label="Answer"]
+      calling-&gt; end[label="reject"]
+      talking -&gt; end[label="hangup"]
+    }</div>
+
+    <footer>
+        <small>Created by Nils O. Selåsdal - nos.utelsystems at gmail.com</small>
+    </footer>
+
+</section>
+
+<section id="outputwrapper">
+    <div id="generating" class="hidden">
+        <h1>Generating...</h1>
+    </div>
+
+    <div id="error" class="hidden"> </div>
+
+    <div id="output" class="hidden">
+        <h1>Output</h1>
+        <a id="outputLink" target="_blank" href=""><img id="outputImage" alt="Generated Graphviz Image"></a>
+    </div>
+</section>
+
+</div>
+</body>
+</html>
+

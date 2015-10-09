@@ -1,0 +1,15 @@
+[Unit]
+Description=Graphviz Web Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/gvweb
+StandardOutput=syslog
+StandardError=syslog
+User=nobody
+ExecStart=/var/lib/gvweb/gvweb
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
