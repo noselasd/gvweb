@@ -1,6 +1,6 @@
 
-td, table, html, body {
-height: 92%;
+html, body {
+height: 100%;
 padding: 0;
 margin: 0;
 }
@@ -10,58 +10,57 @@ background-color: #F6EBCB;
 }
 
 
-#banner, #edit {
+#edit {
 background: #FFFAEB;
 border-color: #8A7843;
 border-style: solid;
+width: 33%;
+min-width: 30em;
+display: flex;
+flex-direction: column;
 }
 
 #banner {
 padding: 0%;
 margin-top: 0.3em;
 padding-bottom: 0.3em;
-color: rgb(7, 54, 66);
 text-align:center;
-width: 30vw;
 overflow:hidden;
-border-radius: 0.95em 0.95em 0 0 ;
-border-bottom-style: none;
-border-width: 1px;
 }
 
 #editor {
-padding: 0%;
-margin: 0%;
 text-align:left;
 }
 
 #wrapper {
+display: flex;
 width: 92%;
 height: 100%;
 margin-left:auto;
 margin-right:auto;
 }
 
+h1 {
+    margin: 1em;
+}
+
 #edit {
-float: left;
-width: 30vw;
-height: 100%;
-border-top-style: none;
+width: 30%;
+height: 98%;
 border-width: 1px;
-border-radius: 0 0 0.95em 0.95em;
+border-radius: 0.95em;
 }
 
 #editor {
-height: 92%;
+height: 100%;
 margin-top: 0.5em;
 }
 
 #outputwrapper {
-float: left;
-width: 50vw;
-margin-left: 1em;
-margin-top: 1em;
-height: 100%;
+margin: 0 1em;;
+width: 66%;
+display: flex;
+flex-direction: column;
 }
 
 #error {
@@ -102,7 +101,6 @@ font-size:16px;
 font-weight:700;
 padding:4px 16px;
 text-shadow:#FE6 0 1px 
-margin-left: 0;
 text-decoration: none;
 outline: none;
 }
@@ -115,5 +113,5 @@ text-decoration: none;
 footer {
 text-align: center;
 color: gray;
-margin-top: 0.3em;
 }
+
