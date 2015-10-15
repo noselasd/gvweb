@@ -20,11 +20,25 @@
     <form action="generate" method="post" id="generateForm">
 
             <input id="submitButton" title="Or hit CTRL+Enter to generate the graph" type="submit" value="Create Graph" >
-            <label>Output:</label>
-            <label><input type="radio" name="imagetype" value="png" checked>png</label>
-            <label><input type="radio" name="imagetype" value="gif">gif</label>
-            <label><input type="radio" name="imagetype" value="jpg">jpg</label>
-            <label><input type="radio" name="imagetype" value="svg">svg</label>
+            <label>Output:
+            <select name="imagetype">
+                <option value="png" selected>png</option>
+                <option value="gif">gif</option>
+                <option value="jpg">jpg</option>
+                <option value="svg">svg</option>
+            </select>
+            </label>
+            <label>Tool:
+            <select name="tool">
+                <option value="dot" selected>dot</option>
+                <option value="neato">neato</option>
+                <option value="twopi">twopi</option>
+                <option value="circo">circo</option>
+                <option value="fdp">fdp</option>
+                <option value="sfdp">sfdp</option>
+                <option value="patchwork">patchwork</option>
+            </select>
+            </label>
     
     <textarea  id="graphtext" name="graphtext" style="display:none;"></textarea>
     </form>

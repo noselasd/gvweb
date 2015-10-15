@@ -30,7 +30,7 @@ func genUUID() (string, error) {
 	return hex.EncodeToString(uuid), nil
 }
 
-func runGraphviz(code, imgType string) graphvizResult {
+func runGraphviz(tool, code, imgType string) graphvizResult {
 	uuid, err := genUUID()
 	if err != nil {
 		return graphvizResult{"", err}
@@ -40,7 +40,7 @@ func runGraphviz(code, imgType string) graphvizResult {
 
 	err = ioutil.WriteFile(fileName, []byte(code), 0644)
 	outputFile := fileName + "." + imgType
-	output, err := exec.Command("dot", "-T", imgType, "-o", outputFile, fileName).CombinedOutput()
+	output, err := exec.Command(tool, "-T", imgType, "-o", outputFile, fileName).CombinedOutput()
 	if err != nil {
 		if len(output) > 0 { //graphviz outputted an error to us.
 			return graphvizResult{"", errors.New(string(output))}
