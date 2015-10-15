@@ -3,7 +3,6 @@ Online Graphbviz Generator
 
 This is a simple Go webapp that lets you type in Graphviz graph language
 and display the generated image.
-(Only the "dot" tool is supported)
 
 Building
 ========
