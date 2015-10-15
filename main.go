@@ -83,16 +83,8 @@ func httpWrapper(l chan string, handler http.Handler) http.Handler {
 	})
 }
 
-var g_Port = flag.Int("port", 12345, "port number to listen on")
-var g_CleanupInterval = flag.Int("purge", 24*60*60, "Remove saved graphs that are older than this amount in seconds. 0 to keep them forever.")
-
-func main() {
-	flag.Parse()
+func serveHTTP(port string) {
 	accessLogChan := make(chan string, 64)
-
-	port := fmt.Sprintf("%d", *g_Port)
-
-	runtime.GOMAXPROCS(3)
 	go accessLogger(accessLogChan)
 
 	reHandler := simplemux.NewRegexpHandler()
@@ -102,15 +94,26 @@ func main() {
 	http.Handle("/"+g_DataDir, http.FileServer(http.Dir(".")))
 	http.Handle("/", reHandler)
 
+	log.Println("Web server listening at port " + port)
+	err := http.ListenAndServe(":"+port, httpWrapper(accessLogChan, http.DefaultServeMux))
+	if err != nil {
+		log.Fatalln("ListenAndServe: ", err)
+	}
+}
+
+var g_Port = flag.Int("port", 12345, "port number to listen on")
+var g_CleanupInterval = flag.Int("purge", 24*60*60, "Remove saved graphs that are older than this amount in seconds. 0 to keep them forever.")
+
+func main() {
+	flag.Parse()
+
+	runtime.GOMAXPROCS(3)
+
 	if *g_CleanupInterval > 0 {
 		interval := time.Duration(*g_CleanupInterval) * time.Second
 		initPurge(g_DataDir, interval)
 		log.Printf("Purging data older than %v\n", interval)
 	}
 
-	log.Println("Web server listening at port " + port)
-	err := http.ListenAndServe(":"+port, httpWrapper(accessLogChan, http.DefaultServeMux))
-	if err != nil {
-		log.Fatalln("ListenAndServe: ", err)
-	}
+	serveHTTP(fmt.Sprintf("%d", *g_Port))
 }
