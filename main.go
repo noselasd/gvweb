@@ -6,6 +6,7 @@ import (
 	"gvweb/simplemux"
 	"log"
 	"net/http"
+	"os"
 	"runtime"
 	"time"
 )
@@ -94,7 +95,7 @@ func serveHTTP(port string) {
 	http.Handle("/"+g_DataDir, http.FileServer(http.Dir(".")))
 	http.Handle("/", reHandler)
 
-	log.Println("Web server listening at port " + port)
+	log.Printf("gvweb(%s) listening at port %s\n", g_Version, port)
 	err := http.ListenAndServe(":"+port, httpWrapper(accessLogChan, http.DefaultServeMux))
 	if err != nil {
 		log.Fatalln("ListenAndServe: ", err)
@@ -103,8 +104,15 @@ func serveHTTP(port string) {
 
 var g_Port = flag.Int("port", 12345, "port number to listen on")
 var g_CleanupInterval = flag.Int("purge", 24*60*60, "Remove saved graphs that are older than this amount in seconds. 0 to keep them forever.")
+var g_Version = "DEVELOPMENT"
 
 func main() {
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Usage of %s:\n", os.Args[0])
+		flag.PrintDefaults()
+		fmt.Fprintf(os.Stderr, "\n%s v.%s\n", os.Args[0], g_Version)
+	}
+
 	flag.Parse()
 
 	runtime.GOMAXPROCS(3)
