@@ -4,7 +4,7 @@ DISTDIR=gvweb-$(VERSION)
 
 .PHONY: gvweb dist gvweb-$(VERSION)
 gvweb:
-	go build $@
+	go build --ldflags "-X main.g_Version=$(VERSION)" $@
 
 gvweb-$(VERSION):
 	mkdir -p $(DISTDIR)
