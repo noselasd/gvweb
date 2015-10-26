@@ -17,6 +17,9 @@ func remove(path string) {
 	}
 }
 
+func isHiddenFile(name string) bool {
+	return len(name) > 0 && name[0] == '.'
+}
 func purgeOldEntries(directory string, limit time.Time) {
 	infos, err := ioutil.ReadDir(directory)
 	if err != nil {
@@ -25,7 +28,7 @@ func purgeOldEntries(directory string, limit time.Time) {
 	}
 
 	for _, entry := range infos {
-		if !entry.IsDir() && entry.ModTime().Before(limit) {
+		if !entry.IsDir() && !isHiddenFile(entry.name) && entry.ModTime().Before(limit) {
 			path := path.Join(directory, entry.Name())
 			remove(path)
 		}
