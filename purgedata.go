@@ -28,7 +28,7 @@ func purgeOldEntries(directory string, limit time.Time) {
 	}
 
 	for _, entry := range infos {
-		if !entry.IsDir() && !isHiddenFile(entry.name) && entry.ModTime().Before(limit) {
+		if !entry.IsDir() && !isHiddenFile(entry.Name()) && entry.ModTime().Before(limit) {
 			path := path.Join(directory, entry.Name())
 			remove(path)
 		}
