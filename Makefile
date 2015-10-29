@@ -14,7 +14,7 @@ gvweb-$(VERSION):
 	mkdir -p $(DISTDIR)/static/
 	cp -ap etc/gvweb.service $(DISTDIR)/etc/
 	cp -ap static/* $(DISTDIR)/static/
-	tar -cvzf $(DISTDIR).tar.gz $(DISTDIR)
+	tar --owner=nobody --group=nobody -cvzf $(DISTDIR).tar.gz $(DISTDIR)
 	rm -rf $(DISTDIR)
 
 dist: gvweb version gvweb-$(VERSION)
