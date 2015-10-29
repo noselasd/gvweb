@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/var/lib/gvweb
-StandardOutput=syslog
-StandardError=syslog
+StandardOutput=journal
+StandardError=journal
 User=nobody
 ExecStart=/var/lib/gvweb/gvweb
 Restart=always
