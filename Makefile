@@ -17,4 +17,4 @@ gvweb-$(VERSION):
 	tar --owner=nobody --group=nobody -cvzf $(DISTDIR).tar.gz $(DISTDIR)
 	rm -rf $(DISTDIR)
 
-dist: gvweb version gvweb-$(VERSION)
+dist: gvweb gvweb-$(VERSION)
