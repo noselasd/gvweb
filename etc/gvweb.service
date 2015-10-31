@@ -4,12 +4,13 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/var/lib/gvweb
+WorkingDirectory=/opt/gvweb
 StandardOutput=journal
 StandardError=journal
 User=nobody
-ExecStart=/var/lib/gvweb/gvweb
+ExecStart=/opt/gvweb/gvweb
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
+
