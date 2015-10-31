@@ -1,5 +1,5 @@
 #!/bin/bash
-DESTDIR=${DESTDIR:-/var/lib/gvweb/}
+DESTDIR=${DESTDIR:-/opt/gvweb/}
 set -e
 go build gvweb
 
