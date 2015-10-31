@@ -1,5 +1,5 @@
 
-VERSION=$(shell git describe --tags --long)
+VERSION=$(shell git describe --tags --long --abbrev=4 --dirty=-D)
 DISTDIR=gvweb-$(VERSION)
 
 .PHONY: gvweb dist gvweb-$(VERSION)
