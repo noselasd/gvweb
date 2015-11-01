@@ -89,8 +89,8 @@ func serveHTTP(port string) {
 	go accessLogger(accessLogChan)
 
 	reHandler := simplemux.NewRegexpHandler()
-	reHandler.AddRoute("^/$", homePage)
-	reHandler.AddRoute("^/generate$", generateHandler)
+	reHandler.AddRoute("^/$", "GET", homePage)
+	reHandler.AddRoute("^/generate$", "POST", generateHandler)
 	http.Handle("/static/", http.FileServer(http.Dir(".")))
 	http.Handle("/"+g_DataDir, http.FileServer(http.Dir(".")))
 	http.Handle("/", reHandler)

@@ -7,6 +7,7 @@ import (
 
 type route struct {
 	re      *regexp.Regexp
+	method  string
 	handler func(http.ResponseWriter, *http.Request, []string)
 }
 
@@ -22,17 +23,19 @@ func NewRegexpHandler() *RegexpHandler {
 	return &h
 }
 
-func (h *RegexpHandler) AddRoute(re string, handler func(http.ResponseWriter, *http.Request, []string)) {
-	r := &route{regexp.MustCompile(re), handler}
+func (h *RegexpHandler) AddRoute(re string, method string, handler func(http.ResponseWriter, *http.Request, []string)) {
+	r := &route{regexp.MustCompile(re), method, handler}
 	h.routes = append(h.routes, r)
 }
 
 func (h *RegexpHandler) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	for _, route := range h.routes {
-		matches := route.re.FindStringSubmatch(r.URL.Path)
-		if matches != nil {
-			route.handler(rw, r, matches)
-			return
+		if route.method == r.Method || route.method == r.Method {
+			matches := route.re.FindStringSubmatch(r.URL.Path)
+			if matches != nil {
+				route.handler(rw, r, matches)
+				return
+			}
 		}
 	}
 
