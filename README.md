@@ -10,3 +10,6 @@ Building
 2. cd $GOPATH/src/gvweb/
 3. go build && ./gvweb -port=4444
 
+Example
+=======
+See http://fiane.mooo.com:8080/graphvizweb/ for a running instance
