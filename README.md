@@ -12,4 +12,4 @@ Building
 
 Example
 =======
-See http://fiane.mooo.com:8080/graphvizweb/ for a running instance
+See http://fiane.mooo.com:8080/graphviz/ for a running instance
