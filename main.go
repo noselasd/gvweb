@@ -95,14 +95,30 @@ func serveHTTP(port string) {
 	http.Handle("/"+g_DataDir, http.FileServer(http.Dir(".")))
 	http.Handle("/", reHandler)
 
-	log.Printf("gvweb(%s) listening at port %s\n", g_Version, port)
-	err := http.ListenAndServe(":"+port, httpWrapper(accessLogChan, http.DefaultServeMux))
+	var scheme string
+	if *g_UseTLS {
+		scheme = "https"
+	} else {
+		scheme = "http"
+	}
+	log.Printf("gvweb(%s) listening at %s port %s\n", g_Version, port, scheme)
+
+	var err error
+
+	if *g_UseTLS {
+		err = http.ListenAndServeTLS(":"+port, *g_TLSCert, *g_TLSKey, httpWrapper(accessLogChan, http.DefaultServeMux))
+	} else {
+		err = http.ListenAndServe(":"+port, httpWrapper(accessLogChan, http.DefaultServeMux))
+	}
 	if err != nil {
 		log.Fatalln("ListenAndServe: ", err)
 	}
 }
 
 var g_Port = flag.Int("port", 12345, "port number to listen on")
+var g_UseTLS = flag.Bool("usetls", false, "Use TLS(HTTPS) intead of plain HTTP")
+var g_TLSCert = flag.String("tlscert", "tls.cert", "Path to TLS certificate file")
+var g_TLSKey = flag.String("tlskey", "tls.key", "Path to TLS key file")
 var g_CleanupInterval = flag.Int("purge", 24*60*60, "Remove saved graphs that are older than this amount in seconds. 0 to keep them forever.")
 var g_Version = "DEVELOPMENT"
 
