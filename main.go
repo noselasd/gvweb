@@ -101,7 +101,7 @@ func serveHTTP(port string) {
 	} else {
 		scheme = "http"
 	}
-	log.Printf("gvweb(%s) listening at %s port %s\n", g_Version, port, scheme)
+	log.Printf("gvweb(%s) listening at %s port %d\n", g_Version, scheme, port)
 
 	var err error
 
