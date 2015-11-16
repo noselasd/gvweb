@@ -1,4 +1,4 @@
-
+TAR?=tar
 VERSION=$(shell git describe --tags --long --abbrev=4 --dirty=-D)
 DISTDIR=gvweb-$(VERSION)
 
@@ -14,7 +14,7 @@ gvweb-$(VERSION):
 	mkdir -p $(DISTDIR)/static/
 	cp -ap etc/gvweb.service $(DISTDIR)/etc/
 	cp -ap static/* $(DISTDIR)/static/
-	tar --owner=nobody --group=nobody -cvzf $(DISTDIR).tar.gz $(DISTDIR)
+	${TAR} --owner=nobody --group=nobody -cvzf $(DISTDIR).tar.gz $(DISTDIR)
 	rm -rf $(DISTDIR)
 
 dist: gvweb gvweb-$(VERSION)
