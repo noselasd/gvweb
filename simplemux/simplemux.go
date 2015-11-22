@@ -30,7 +30,7 @@ func (h *RegexpHandler) AddRoute(re string, method string, handler func(http.Res
 
 func (h *RegexpHandler) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	for _, route := range h.routes {
-		if route.method == r.Method || route.method == r.Method {
+		if route.method == r.Method || route.method == "" {
 			matches := route.re.FindStringSubmatch(r.URL.Path)
 			if matches != nil {
 				route.handler(rw, r, matches)
