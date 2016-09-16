@@ -31,7 +31,7 @@ func generateHandler(w http.ResponseWriter, r *http.Request, matches []string) {
 		return
 	}
 	if len(imgType) == 0 {
-		http.Error(w, fmt.Sprintf("imagetype is not specified", tool), http.StatusBadRequest)
+		http.Error(w, fmt.Sprintf("imagetype is not specified"), http.StatusBadRequest)
 		return
 	}
 
