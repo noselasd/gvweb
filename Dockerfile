@@ -5,14 +5,22 @@ ENV SRC_PATH ${SRC_PATH:-./}
 # Copy the app to the image
 COPY ${SRC_PATH} /go/src/gvweb
 
-RUN\
+RUN set -ex && \
+	useradd -r gvweb &&\
 	apt-get update &&\
 	apt-get -y install graphviz &&\
 	cd /go/src/gvweb &&\
-    	make
+    	make &&\
+	mkdir -p /app/data &&\
+	chown -R gvweb:gvweb /app &&\
+	cp -a gvweb static /app/ &&\
+	rm -rf /go/src/*
 
-ENV PORT=80
-EXPOSE $PORT
-WORKDIR /go/src/gvweb
+	
 
-CMD ["./gvweb", "-port", "80"]
+EXPOSE 8080
+WORKDIR /app
+USER gvweb:gvweb
+
+CMD ["./gvweb", "-port", "8080"]
+
