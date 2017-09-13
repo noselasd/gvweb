@@ -56,11 +56,17 @@ func serveHTTP(port string) {
 	log.Printf("gvweb(%s) listening at %s port %s\n", g_Version, scheme, port)
 
 	var err error
+	srv := http.Server{
+		Addr:         ":" + port,
+		Handler:      httpWrapper(accessLogChan, http.DefaultServeMux),
+		ReadTimeout:  30 * time.Second,
+		WriteTimeout: 30 * time.Second,
+	}
 
 	if *g_UseTLS {
-		err = http.ListenAndServeTLS(":"+port, *g_TLSCert, *g_TLSKey, httpWrapper(accessLogChan, http.DefaultServeMux))
+		err = srv.ListenAndServeTLS(*g_TLSCert, *g_TLSKey)
 	} else {
-		err = http.ListenAndServe(":"+port, httpWrapper(accessLogChan, http.DefaultServeMux))
+		err = srv.ListenAndServe()
 	}
 	if err != nil {
 		log.Fatalln("ListenAndServe: ", err)
