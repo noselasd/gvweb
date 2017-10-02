@@ -6,14 +6,14 @@ import (
 	"net/http"
 )
 
-var g_supportedTools = [...]string{"dot", "neato", "twopi", "circo", "fdp", "sfdp", "patchwork"}
+var gsupportedTools = [...]string{"dot", "neato", "twopi", "circo", "fdp", "sfdp", "patchwork"}
 
 func homePage(w http.ResponseWriter, r *http.Request, matches []string) {
 	http.ServeFile(w, r, "static/index.html")
 }
 
 func isSupportedTool(tool string) bool {
-	for _, val := range g_supportedTools {
+	for _, val := range gsupportedTools {
 		if tool == val {
 			return true
 		}
@@ -45,9 +45,9 @@ func generateHandler(w http.ResponseWriter, r *http.Request, matches []string) {
 		log.Print(result.err)
 		http.Error(w, result.err.Error(), http.StatusNotAcceptable)
 		return
-	} else {
-		w.WriteHeader(http.StatusCreated)
-		w.Write([]byte(result.fileName))
-		return
 	}
+	w.WriteHeader(http.StatusCreated)
+	w.Write([]byte(result.fileName))
+	return
+
 }

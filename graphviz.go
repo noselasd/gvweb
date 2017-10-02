@@ -36,7 +36,7 @@ func runGraphviz(tool, code, imgType string) graphvizResult {
 		return graphvizResult{"", err}
 	}
 
-	fileName := path.Join(g_DataDir, uuid)
+	fileName := path.Join(gDataDir, uuid)
 
 	err = ioutil.WriteFile(fileName, []byte(code), 0644)
 	outputFile := fileName + "." + imgType
