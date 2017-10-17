@@ -2,3 +2,4 @@ bin/
 pkg/
 gvweb
 *.swp
+.vscode
