@@ -1,4 +1,4 @@
-FROM golang:1.9-stretch
+FROM golang:1.10-stretch
 
 ENV SRC_PATH ${SRC_PATH:-./}
 
