@@ -1,4 +1,4 @@
-FROM golang:1.10-stretch
+FROM golang:1.17-stretch
 
 ENV SRC_PATH ${SRC_PATH:-./}
 
@@ -16,7 +16,7 @@ RUN set -ex && \
 	cp -a gvweb static /app/ &&\
 	rm -rf /go/src/*
 
-	
+
 
 EXPOSE 8080
 WORKDIR /app
