@@ -14,34 +14,7 @@
 <div id="wrapper">
 
 <section id="edit">
-<header id="banner">
-    <h1>Online <a href="http://www.graphviz.org/">Graphviz</a> Generator</h1>
-</header>
-    <form action="generate" method="post" id="generateForm">
 
-            <input id="submitButton" title="Or hit CTRL+Enter to generate the graph" type="submit" value="Create Graph" >
-            <label>Output:
-            <select name="imagetype">
-                <option value="png" selected>png</option>
-                <option value="gif">gif</option>
-                <option value="jpg">jpg</option>
-                <option value="svg">svg</option>
-            </select>
-            </label>
-            <label>Tool:
-            <select name="tool">
-                <option value="dot" selected>dot</option>
-                <option value="neato">neato</option>
-                <option value="twopi">twopi</option>
-                <option value="circo">circo</option>
-                <option value="fdp">fdp</option>
-                <option value="sfdp">sfdp</option>
-                <option value="patchwork">patchwork</option>
-            </select>
-            </label>
-
-    <textarea  id="graphtext" name="graphtext" style="display:none;"></textarea>
-    </form>
     <div id="editor">/* Type the graphviz dot notation here */
     digraph G {
       idle -&gt; calling
@@ -50,26 +23,54 @@
       talking -&gt; end[label="hangup"]
     }</div>
 
-    <footer>
-        <small>Created by Nils O. Selåsdal - nos.utelsystems at gmail.com</small>
-    </footer>
 
 </section>
 
 <section id="outputwrapper">
+    <header id="banner">
+        <h1>Online <a href="http://www.graphviz.org/">Graphviz</a> Generator</h1>
+    </header>
+        <form action="generate" method="post" id="generateForm">
+
+                <input id="submitButton" title="Or hit CTRL+Enter to generate the graph" type="submit" value="Create Graph" >
+                <label>Output:
+                <select name="imagetype">
+                    <option value="png" selected>png</option>
+                    <option value="gif">gif</option>
+                    <option value="jpg">jpg</option>
+                    <option value="svg">svg</option>
+                </select>
+                </label>
+                <label>Tool:
+                <select name="tool">
+                    <option value="dot" selected>dot</option>
+                    <option value="neato">neato</option>
+                    <option value="twopi">twopi</option>
+                    <option value="circo">circo</option>
+                    <option value="fdp">fdp</option>
+                    <option value="sfdp">sfdp</option>
+                    <option value="patchwork">patchwork</option>
+                </select>
+                </label>
+
+        <textarea  id="graphtext" name="graphtext" style="display:none;"></textarea>
+        </form>
+
+
+    <div id="error" class="hidden"> </div>
     <div id="generating" class="hidden">
         <h1>Generating...</h1>
     </div>
-
-    <div id="error" class="hidden"> </div>
-
     <div id="output" class="hidden">
-        <h1>Output</h1>
         <a id="outputLink" target="_blank" href=""><img id="outputImage" alt="Generated Graphviz Image"></a>
     </div>
 </section>
 
+<footer>
+    <small>Created by Nils O. Selåsdal - nos.utelsystems at gmail.com</small>
+</footer>
 </div>
+
 </body>
 </html>
 

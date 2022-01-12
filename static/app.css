@@ -1,118 +1,104 @@
 
 html, body {
-height: 100%;
-padding: 0;
-margin: 0;
-}
-
-body {
-background-color: #F6EBCB;
-}
-
-
-#edit {
-background: #FFFAEB;
-border-color: #8A7843;
-border-style: solid;
-width: 33%;
-min-width: 30em;
-display: flex;
-flex-direction: column;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
 }
 
 #banner {
-padding: 0%;
-margin-top: 0.0em;
-padding-bottom: 0.0em;
-line-height: 0%;
-text-align:left;
-overflow:hidden;
+    padding: 0%;
+    margin-top: 0.0em;
+
+    line-height: 0%;
+    text-align:left;
 }
 
 #editor {
-text-align:left;
+    text-align:left;
 }
 
 #wrapper {
-display: flex;
-width: 92%;
-height: 100%;
-margin-left:auto;
-margin-right:auto;
-}
-
-h1 {
-    margin: 1em;
+    display: flex;
+    flex-wrap:wrap;
+    height: 100%;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 #edit {
-width: 30%;
-height: 98%;
-border-width: 1px;
-border-radius: 0.95em;
+    resize: vertical;
+    width: 33%;
+    min-width: 30em;
+    width: 40%;
+    border-right-width:3px;
+    border-right-color: #f0f0f0;
+    border-right-style:  solid;
 }
 
 #editor {
-height: 100%;
-margin-top: 0.5em;
+    min-height:calc(100% - 1.5em);
 }
 
 #outputwrapper {
-margin: 0 1em;;
-width: 66%;
-display: flex;
-flex-direction: column;
+    margin: 0 1em;;
+    min-height:calc(100% - 1.5em);
+    flex: 1;
+    flex-direction: column;
 }
 
 #error {
-border: 1px solid;
-margin: 10px 0px;
-padding:15px 10px 15px 50px;
-border-color: red;
-word-wrap: break-word;
-margin-top: 1em;
-color: #D8000C;
-background-color: #FFBABA;
-background-repeat: no-repeat;
-background-position: 10px center;
-background-image: url('error.png');
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    border-color: red;
+    word-wrap: break-word;
+    margin-top: 1em;
+    color: #D8000C;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-image: url('error.png');
 
 }
 
 .hidden {
-display: none;
+    display: none;
 }
 a {
-text-decoration: none;
-color: #8A7843;
+    text-decoration: none;
+    color: green;
 }
 
 a:link, a:visited {
-color: #8A7843;
+    color: green;
+    text-decoration: underline;
 }
 a:hover {
-color: #8A7843;
-text-decoration: underline;
+
+    color: lightgreen;
 }
 
 #submitButton {
-background: #FFFAEB;
-border-radius:5px;
-font-size:16px;
-font-weight:700;
-padding:4px 16px;
-text-shadow:#FE6 0 1px;
-text-decoration: none;
-outline: none;
+    background: #f0f0f0;
+    border-radius:5px;
+    font-size:16px;
+    font-weight:700;
+    padding:4px 16px;
+    text-shadow:#a0a0a0 0 1px;
+    text-decoration: none;
+    outline: none;
 }
 
 #submitButton:hover {
-background: #8A7843;
-text-decoration: none;
+    background: #a0a0a0;
+    text-decoration: none;
 }
 
 footer {
-text-align: center;
-color: gray;
+    text-align: center;
+    background-color: #f0f0f0;
+    color: black;
+    height: 1.5em;
+    width: 100%;
 }
 
