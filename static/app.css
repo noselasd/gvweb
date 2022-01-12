@@ -28,7 +28,6 @@ html, body {
 
 #edit {
     resize: vertical;
-    width: 33%;
     min-width: 30em;
     width: 40%;
     border-right-width:3px;
@@ -41,7 +40,8 @@ html, body {
 }
 
 #outputwrapper {
-    margin: 0 1em;;
+    margin: 0 1em;
+    max-width:58%;
     min-height:calc(100% - 1.5em);
     flex: 1;
     flex-direction: column;
